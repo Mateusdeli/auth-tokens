@@ -1,0 +1,16 @@
+.container {
+    margin: 0.75rem 0;
+}
+
+.label {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.input {
+    padding: 0.3rem;
+    border-radius: 7px;
+    outline: transparent;
+    background: #fff;
+    color: #000;
+}
