@@ -47,7 +47,10 @@ export default function AuthProvider({ children }: AuthProviderProps) {
     try {
       const resposta = await http.post('/auth/loadSession', { token })
       const dados = await resposta.data
-      setDadosAutenticacao({ token, refreshToken: dados.refreshToken, isLogged: true })
+      if (!dados) {
+        return Promise.reject(false)
+      }
+      setDadosAutenticacao({ token, refreshToken: dados.data.refreshToken, isLogged: true })
       return Promise.resolve(true)
     } catch (erro) {
       return Promise.reject(false)

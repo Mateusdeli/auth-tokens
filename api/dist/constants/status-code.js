@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FORBIDDEN = exports.UNAUTHORIZED = exports.BAD_REQUEST = exports.SUCCESS = void 0;
+const SUCCESS = 200;
+exports.SUCCESS = SUCCESS;
+const BAD_REQUEST = 400;
+exports.BAD_REQUEST = BAD_REQUEST;
+const UNAUTHORIZED = 401;
+exports.UNAUTHORIZED = UNAUTHORIZED;
+const FORBIDDEN = 403;
+exports.FORBIDDEN = FORBIDDEN;
