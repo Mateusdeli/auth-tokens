@@ -1,5 +1,5 @@
 ## Sobre aplicação
-Desenvolvida uma aplicação que simula a autenticação baseada em tokens. É usado o access token para realização do login e o refresh token para renovação.
+Desenvolvida uma aplicação que simula a autenticação baseada em tokens. É usado o access token para realização do login e o refresh token para renovação. Foi usado o redis para realizar o salvamento dos tokens.
 
 #### Link de acesso
 > http://localhost:3000
