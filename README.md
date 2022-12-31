@@ -18,5 +18,5 @@ ___
 ### Executa o build das imagens
 > docker-compose build
 
-### Inicializa os componentes
+### Inicializa os containers
 > docker-compose up -d
