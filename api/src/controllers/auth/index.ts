@@ -1,9 +1,7 @@
 import { Response } from "express"
 import Request from "../../interfaces/Request"
-
-const { BAD_REQUEST, SUCCESS, UNAUTHORIZED } = require('../../constants/status-code')
-const AuthService = require('../../services/auth')
-
+import { BAD_REQUEST, SUCCESS, UNAUTHORIZED } from '../../constants/status-code'
+import AuthService from '../../services/auth'
 
 export default {
     login: async (req: Request, res: Response) => {

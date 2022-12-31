@@ -53,7 +53,6 @@ const validarRefreshToken = (req, res, next) => {
         next();
     }
     catch (erro) {
-        console.log(erro);
         return res.status(status_code_1.UNAUTHORIZED).send({
             message: 'Sessão expirada!'
         });

@@ -14,7 +14,7 @@ interface LoginProps {
 
 export interface AuthContextProps {
   dadosAutenticacao: DadosAutenticacaoProps
-  checaUsuarioAutenticado: Promise<Boolean> 
+  checaUsuarioAutenticado: Promise<Boolean> | any
   alterarDadosAutenticacao: (dados: { token: string, refreshToken: string}) => void
   efetuarLogin: (dados: LoginProps) => Promise<void>
   efetuarLogout: () => Promise<void>

@@ -8,21 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const { BAD_REQUEST, SUCCESS, UNAUTHORIZED } = require('../../constants/status-code');
-const AuthService = require('../../services/auth');
+const status_code_1 = require("../../constants/status-code");
+const auth_1 = __importDefault(require("../../services/auth"));
 exports.default = {
     login: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { email, password } = req.body;
-            const resposta = yield AuthService.login({ email, password });
-            return res.status(SUCCESS).send({
+            const resposta = yield auth_1.default.login({ email, password });
+            return res.status(status_code_1.SUCCESS).send({
                 message: 'Login realizado com sucesso',
                 data: Object.assign({}, resposta)
             });
         }
         catch (erro) {
-            return res.status(BAD_REQUEST).send({
+            return res.status(status_code_1.BAD_REQUEST).send({
                 message: erro
             });
         }
@@ -30,15 +33,15 @@ exports.default = {
     logout: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const { refreshToken } = req.body;
-            const logoutRealizado = yield AuthService.logout(refreshToken);
+            const logoutRealizado = yield auth_1.default.logout(refreshToken);
             if (logoutRealizado) {
-                return res.status(SUCCESS).send({
+                return res.status(status_code_1.SUCCESS).send({
                     message: 'Logout realizado com sucesso!'
                 });
             }
         }
         catch (erro) {
-            return res.status(BAD_REQUEST).send({
+            return res.status(status_code_1.BAD_REQUEST).send({
                 message: erro
             });
         }
@@ -46,11 +49,11 @@ exports.default = {
     refresh: (req, res) => {
         try {
             const { email, password } = req.user;
-            const resposta = AuthService.refresh({ email, password });
-            return res.status(SUCCESS).send(resposta);
+            const resposta = auth_1.default.refresh({ email, password });
+            return res.status(status_code_1.SUCCESS).send(resposta);
         }
         catch (erro) {
-            return res.status(BAD_REQUEST).send({
+            return res.status(status_code_1.BAD_REQUEST).send({
                 message: 'Houve um erro ao tentar obter um refresh token.'
             });
         }
@@ -58,14 +61,14 @@ exports.default = {
     loadSession: (req, res) => {
         const { token } = req.body;
         if (!token) {
-            return res.status(UNAUTHORIZED);
+            return res.status(status_code_1.UNAUTHORIZED);
         }
         try {
-            const dados = AuthService.loadSession(token);
-            return res.status(SUCCESS).send({ data: Object.assign({}, dados) });
+            const dados = auth_1.default.loadSession(token);
+            return res.status(status_code_1.SUCCESS).send({ data: Object.assign({}, dados) });
         }
         catch (erro) {
-            return res.status(UNAUTHORIZED);
+            return res.status(status_code_1.UNAUTHORIZED);
         }
     }
 };

@@ -19,8 +19,6 @@ export default function Home() {
         await efetuarLogin({ email, password })
         await router.push(DASHBOARD_ROUTE)
       } catch (erro) {
-        console.log(erro);
-        
         alert('Erro ao tentar realizar o login, tente novamente.')
         setEmail('')
         setPassword('')

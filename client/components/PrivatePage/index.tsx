@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import useAuthContext from '../../hooks/useAuthContext'
 
 interface PrivatePageProps {

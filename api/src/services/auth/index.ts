@@ -1,15 +1,15 @@
 import User from "../../interfaces/User"
 
-const jwt = require('jsonwebtoken')
-const redis = require('../../utils/redis')
-const ValidacaoDadosService = require('./validacao-acesso.service')
+import jwt from 'jsonwebtoken'
+import redis from '../../utils/redis'
+import ValidacaoDadosService from './validacao-acesso.service'
 
 const {
     ACCESS_TOKEN_SECRET_KEY,
     REFRESH_TOKEN_SECRET_KEY,
     ACCESS_TOKEN_TIME,
     REFRESH_TOKEN_TIME
-} = process.env
+}: any = process.env 
 
 const login = async ({ email, password }: User) => {
     if (!email || !password) throw new Error('Email ou senha nao informados')
@@ -42,7 +42,7 @@ const refresh = ({ email, password }: User) => {
     }
 }
 
-const loadSession = (token: string) => {
+const loadSession = (token: string): any => {
     const dados = jwt.verify(token, ACCESS_TOKEN_SECRET_KEY)
     if (!dados) {
         throw new Error('Nao foi possivel carregar a sessão.')

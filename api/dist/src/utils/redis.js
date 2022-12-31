@@ -10,7 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const redis_1 = require("redis");
-const client = (0, redis_1.createClient)();
+const client = (0, redis_1.createClient)({
+    url: 'redis://redis:6379'
+});
 client.on('error', err => console.error('Redis Client Error', err));
 client.on('connect', () => console.log('Redis running...'));
 client.connect();
