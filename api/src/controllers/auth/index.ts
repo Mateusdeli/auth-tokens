@@ -4,7 +4,7 @@ import { BAD_REQUEST, SUCCESS, UNAUTHORIZED } from '../../constants/status-code'
 import AuthService from '../../services/auth'
 
 export default {
-    login: async (req: Request, res: Response) => {
+    login: async (req: Request | any, res: Response | any) => {
         try {
             const { email, password } = req.body
             const resposta = await AuthService.login({ email, password })
@@ -19,7 +19,7 @@ export default {
           }
     },
 
-    logout: async (req: Request, res: Response) => {
+    logout: async (req: Request | any, res: Response | any) => {
         try {
             const { refreshToken } = req.body
             const logoutRealizado = await AuthService.logout(refreshToken)
@@ -35,7 +35,7 @@ export default {
           }
     },
 
-    refresh: (req: Request, res: Response) => {
+    refresh: (req: Request | any, res: Response | any) => {
         try {
             const { email, password } = req.user
             const resposta = AuthService.refresh({ email, password })
@@ -47,7 +47,7 @@ export default {
         }
     },
 
-    loadSession: (req: Request, res: Response) => {
+    loadSession: (req: Request | any, res: Response | any) => {
         const { token } = req.body
         if (!token) {
             return res.status(UNAUTHORIZED)

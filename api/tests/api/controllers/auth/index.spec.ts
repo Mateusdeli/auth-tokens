@@ -1,8 +1,6 @@
 import HttpMock from '../../../__mocks__/http'
-const AuthController = require('../../../../src/controllers/auth')
-const AuthService = require('../../../../src/services/auth')
-
-
+import AuthController from '../../../../src/controllers/auth'
+import AuthService from '../../../../src/services/auth'
 
 describe('AuthController', () => {
     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.dk8cVwBMdjmCEn_Q6s2qveecaoGEGIOkcQAwXkGBeK4'
@@ -21,7 +19,7 @@ describe('AuthController', () => {
         const request = HttpMock.mockRequest({ sessionData: { email: 'teste@teste.com', password: '1234'} })
         const response = HttpMock.mockResponse()
         
-        jest.spyOn(AuthService, 'login').mockReturnValue({ token, refreshToken })
+        jest.spyOn(AuthService, 'login').mockReturnValue({ token, refreshToken } as any)
         await AuthController.login(request, response)
 
         expect(response.status).toHaveBeenCalledWith(200)
@@ -35,7 +33,7 @@ describe('AuthController', () => {
         const request = HttpMock.mockRequest({ sessionData: { refreshToken } })
         const response = HttpMock.mockResponse()
 
-        jest.spyOn(AuthService, 'logout').mockReturnValue(true)
+        jest.spyOn(AuthService, 'logout').mockResolvedValue(true)
         await AuthController.logout(request, response)
 
         expect(response.status).toHaveBeenCalledWith(200)
